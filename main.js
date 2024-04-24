@@ -144,3 +144,55 @@ nombreInput.addEventListener('input', actualizarResumen);
 correoInput.addEventListener('input', actualizarResumen);
 telefonoInput.addEventListener('input', actualizarResumen);
 btnAgregarProducto.addEventListener('click', actualizarResumen);
+
+
+// database code
+
+// Función para generar un ID de cotización
+function generarIdCotizacion() {
+  const fecha = new Date();
+  const dia = fecha.getDate().toString().padStart(2, '0');
+  const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+  const anio = fecha.getFullYear();
+  const identificador = Math.floor(Math.random() * 900000) + 100000;
+  return `${dia}${mes}${anio}-${identificador}`;
+}
+
+// Función para guardar los datos de la cotización en la base de datos
+function guardarCotizacion() {
+  const empresa = `
+    Nombre: ${previewNombre.textContent}
+    Correo: ${previewCorreo.textContent}
+    Teléfono: ${previewTelefono.textContent}
+  `;
+
+  const productos = [];
+  ProductList.forEach(producto => {
+    productos.push({
+      nombre: producto.nombre,
+      marca: producto.marca,
+      cantidad: producto.cantidad,
+      descripcion: producto.descripcion
+    });
+  });
+
+  const idCotizacion = generarIdCotizacion();
+
+  // Aquí puedes implementar el código para guardar los datos en la base de datos
+
+
+  
+  // Puedes utilizar una API o una biblioteca como Firebase o MongoDB para interactuar con la base de datos
+
+  console.log('Datos de la cotización:', {
+    empresa,
+    productos,
+    idCotizacion
+  });
+
+  alert(`Cotización generada con ID: ${idCotizacion}`);
+}
+
+// Evento para generar la cotización
+const btnGenerarCotizacion = document.getElementById('generarCotizacion');
+btnGenerarCotizacion.addEventListener('click', guardarCotizacion);

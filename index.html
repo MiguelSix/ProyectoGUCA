@@ -68,24 +68,9 @@
                             required>
                     </div>
                 </form>
-                <div class="preview-container">
-                    <h3>Previsualización</h3>
-                    <div class="preview">
-                        <div class="preview-item">
-                            <span class="preview-label">Nombre:</span>
-                            <span class="preview-value" id="preview-nombre">Nombre de la empresa</span>
-                        </div>
-                        <div class="preview-item">
-                            <span class="preview-label">Correo:</span>
-                            <span class="preview-value" id="preview-correo">Correo electrónico</span>
-                        </div>
-                        <div class="preview-item">
-                            <span class="preview-label">Teléfono:</span>
-                            <span class="preview-value" id="preview-telefono">Teléfono de la empresa</span>
-                        </div>
-                    </div>
-                </div>
             </div>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#seguimientoModal">Seguimiento de
+                Cotización</button>
         </section>
         <section class="section2">
             <!-- Contenido de la sección 2 -->
@@ -193,7 +178,36 @@
                     </div>
                 </div>
             </div>
+            <button class="btn btn-primary" id="generarCotizacion">Generar Cotización</button>
         </section>
+    </div>
+
+    <!-- Modal de Seguimiento de Cotización -->
+    <div class="modal fade" id="seguimientoModal" tabindex="-1" role="dialog" aria-labelledby="seguimientoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="seguimientoModalLabel">Seguimiento de Cotización</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="idCotizacion">ID de Cotización</label>
+                            <input type="text" class="form-control" id="idCotizacion"
+                                placeholder="Ingrese el ID de Cotización">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <a href="seguimiento.html" class="btn btn-primary">Siguiente</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="footer-basic">
@@ -211,7 +225,6 @@
                 <li class="list-inline-item"><a href="#">Terms</a></li>
                 <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
             </ul>
-            <p class="copyright">GUCA Distribución © 2024</p>
         </footer>
     </div>
 
