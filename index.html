@@ -26,19 +26,24 @@
         </div>
     </nav>
 
+    <!-- index.html -->
     <div class="section-indicator">
         <div class="dots-container">
             <div class="dot-container">
                 <div class="dot"></div>
-                <span class="section-name">Sección 1</span>
+                <span class="section-name">Empresa</span>
             </div>
             <div class="dot-container">
                 <div class="dot"></div>
-                <span class="section-name">Sección 2</span>
+                <span class="section-name">Productos</span>
             </div>
             <div class="dot-container">
                 <div class="dot"></div>
-                <span class="section-name">Sección 3</span>
+                <span class="section-name">Detalles</span>
+            </div>
+            <div class="dot-container">
+                <div class="dot"></div>
+                <span class="section-name">Resumen</span>
             </div>
         </div>
         <hr class="indicator-line">
@@ -63,26 +68,27 @@
                             required>
                     </div>
                 </form>
-            </div>
-            <div class="preview-container">
-                <h3>Previsualización</h3>
-                <div class="preview">
-                    <div class="preview-item">
-                        <span class="preview-label">Nombre:</span>
-                        <span class="preview-value" id="preview-nombre">Nombre de la empresa</span>
-                    </div>
-                    <div class="preview-item">
-                        <span class="preview-label">Correo:</span>
-                        <span class="preview-value" id="preview-correo">Correo electrónico</span>
-                    </div>
-                    <div class="preview-item">
-                        <span class="preview-label">Teléfono:</span>
-                        <span class="preview-value" id="preview-telefono">Teléfono de la empresa</span>
+                <div class="preview-container">
+                    <h3>Previsualización</h3>
+                    <div class="preview">
+                        <div class="preview-item">
+                            <span class="preview-label">Nombre:</span>
+                            <span class="preview-value" id="preview-nombre">Nombre de la empresa</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Correo:</span>
+                            <span class="preview-value" id="preview-correo">Correo electrónico</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Teléfono:</span>
+                            <span class="preview-value" id="preview-telefono">Teléfono de la empresa</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         <section class="section2">
+            <!-- Contenido de la sección 2 -->
             <div class="container_section2">
                 <form>
                     <h2>Datos del Producto</h2>
@@ -100,7 +106,8 @@
                     </div>
                     <div class="form-group">
                         <label for="descripcionproducto">Descripcion:</label>
-                        <input type="text" class="form-control" id="descripcionproducto" placeholder="Descripcion" required>
+                        <input type="text" class="form-control" id="descripcionproducto" placeholder="Descripcion"
+                            required>
                     </div>
                     <button id='btnAgregarProducto' type="button" class="btn btn-secondary">Agregar Producto</button>
                 </form>
@@ -109,21 +116,84 @@
                 <div class="preview-container">
                     <table class="table table-sm table-striped">
                         <thead>
-                          <tr>
-                            <th scope="col" >Nombre</th>
-                            <th scope="col" >Marca</th>
-                            <th scope="col" >Cantidad</th>
-                            <th scope="col" >Descripcion</th>
-                            <th scope="col" ></th>
-                          </tr>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col"></th>
+                            </tr>
                         </thead>
                         <tbody id="tablaprevisualizacion">
                         </tbody>
-                      </table>
+                    </table>
                 </div>
             </div>
         </section>
-        <section class="section3">Sección 3</section>
+        <!-- index.html -->
+        <section class="section3">
+            <h2>Detalles</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Información de Envío</h3>
+                        <div class="form-group">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" class="form-control" id="direccion" placeholder="Ingrese la dirección">
+                        </div>
+                        <div class="form-group">
+                            <label for="ciudad">Ciudad</label>
+                            <input type="text" class="form-control" id="ciudad" placeholder="Ingrese la ciudad">
+                        </div>
+                        <div class="form-group">
+                            <label for="pais">País</label>
+                            <input type="text" class="form-control" id="pais" placeholder="Ingrese el país">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Método de Pago</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pago" id="tarjeta" value="tarjeta">
+                            <label class="form-check-label" for="tarjeta">Tarjeta de Crédito</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pago" id="paypal" value="paypal">
+                            <label class="form-check-label" for="paypal">PayPal</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pago" id="efectivo" value="efectivo">
+                            <label class="form-check-label" for="efectivo">Efectivo</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section4">
+            <h2>Resumen</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Detalles de la Empresa</h3>
+                        <p id="resumen-empresa"></p>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Productos</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Marca</th>
+                                    <th>Cantidad</th>
+                                    <th>Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resumen-productos"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <div class="footer-basic">

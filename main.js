@@ -2,6 +2,21 @@ const btnPrev = document.getElementById('btnPrev');
 const btnNext = document.getElementById('btnNext');
 const content = document.querySelector('.content');
 
+// Secuencia de secciones
+btnNext.addEventListener('click', () => {
+  currentSection = Math.min(currentSection + 1, 3); // Cambia '3' al número de secciones menos 1
+  content.style.transform = `translateX(-${currentSection * 100}vw)`;
+  updateActiveDot(currentSection);
+});
+
+btnPrev.addEventListener('click', () => {
+  currentSection = Math.max(currentSection - 1, 0);
+  content.style.transform = `translateX(-${currentSection * 100}vw)`;
+  updateActiveDot(currentSection);
+});
+
+
+/* Codigo de los dots de navegación */
 let currentSection = 0;
 
 const dots = document.querySelectorAll('.dot');
@@ -28,9 +43,9 @@ const previewTelefono = document.getElementById('preview-telefono');
 
 // Función para actualizar la previsualización
 function actualizarPrevisualizacion() {
-    previewNombre.textContent = nombreInput.value || 'Nombre de la empresa';
-    previewCorreo.textContent = correoInput.value || 'Correo electrónico';
-    previewTelefono.textContent = telefonoInput.value || 'Teléfono de la empresa';
+  previewNombre.textContent = nombreInput.value || 'Nombre de la empresa';
+  previewCorreo.textContent = correoInput.value || 'Correo electrónico';
+  previewTelefono.textContent = telefonoInput.value || 'Teléfono de la empresa';
 }
 
 // Asigna el evento input a cada campo del formulario
@@ -60,7 +75,7 @@ const tablaprevisualizacion = document.getElementById('tablaprevisualizacion');
 function actualizarTabla() {
   //crea fila de la ultima componente de la lista de productos
   var fila = document.createElement("tr");
-  var i = ProductList.length-1;
+  var i = ProductList.length - 1;
   //agrega nombre a la fila
   var celda = document.createElement("td");
   celda.textContent = ProductList[i].nombre;
@@ -83,7 +98,7 @@ function actualizarTabla() {
 
 //Agrega productos a la lista al clickear el boton
 btnAgregarProducto.addEventListener('click', () => {
-  if (nombreproductoInput.value && marcaproductoInput.value && cantidadproductoInput.value && descripcionproductoInput.value){
+  if (nombreproductoInput.value && marcaproductoInput.value && cantidadproductoInput.value && descripcionproductoInput.value) {
     var Producto = {
       nombre: nombreproductoInput.value,
       marca: marcaproductoInput.value,
@@ -92,22 +107,40 @@ btnAgregarProducto.addEventListener('click', () => {
     };
     ProductList.push(Producto);
     actualizarTabla();
-    nombreproductoInput.value='';
-    marcaproductoInput.value='';
-    cantidadproductoInput.value='';
-    descripcionproductoInput.value='';
+    nombreproductoInput.value = '';
+    marcaproductoInput.value = '';
+    cantidadproductoInput.value = '';
+    descripcionproductoInput.value = '';
   }
 });
 
+// Seccion 3 y 4
+const resumenEmpresa = document.getElementById('resumen-empresa');
+const resumenProductos = document.getElementById('resumen-productos');
 
-btnPrev.addEventListener('click', () => {
-  currentSection = Math.max(currentSection - 1, 0);
-  content.style.transform = `translateX(-${currentSection * 100}vw)`;
-  updateActiveDot(currentSection);
-});
+function actualizarResumen() {
+  const empresa = `
+        Nombre: ${previewNombre.textContent}
+        Correo: ${previewCorreo.textContent}
+        Teléfono: ${previewTelefono.textContent}
+    `;
+  resumenEmpresa.textContent = empresa;
 
-btnNext.addEventListener('click', () => {
-  currentSection = Math.min(currentSection + 1, 2); // Cambia '2' al número de secciones menos 1
-  content.style.transform = `translateX(-${currentSection * 100}vw)`;
-  updateActiveDot(currentSection);
-});
+  resumenProductos.innerHTML = '';
+  ProductList.forEach(producto => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+            <td>${producto.nombre}</td>
+            <td>${producto.marca}</td>
+            <td>${producto.cantidad}</td>
+            <td>${producto.descripcion}</td>
+        `;
+    resumenProductos.appendChild(row);
+  });
+}
+
+// Llama a la función actualizarResumen cuando se actualice la previsualización
+nombreInput.addEventListener('input', actualizarResumen);
+correoInput.addEventListener('input', actualizarResumen);
+telefonoInput.addEventListener('input', actualizarResumen);
+btnAgregarProducto.addEventListener('click', actualizarResumen);
