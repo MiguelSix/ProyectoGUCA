@@ -1,3 +1,4 @@
+/* Navegacion de botones */
 const btnPrev = document.getElementById('btnPrev');
 const btnNext = document.getElementById('btnNext');
 const content = document.querySelector('.content');
@@ -15,7 +16,6 @@ btnPrev.addEventListener('click', () => {
   updateActiveDot(currentSection);
 });
 
-
 /* Codigo de los dots de navegación */
 let currentSection = 0;
 
@@ -31,30 +31,12 @@ function updateActiveDot(index) {
   });
 }
 
+/* Navegacion y dots */
+
 // Obtiene los elementos del formulario
 const nombreInput = document.getElementById('nombre');
 const correoInput = document.getElementById('correo');
 const telefonoInput = document.getElementById('telefono');
-
-// Obtiene los elementos de la previsualización
-const previewNombre = document.getElementById('preview-nombre');
-const previewCorreo = document.getElementById('preview-correo');
-const previewTelefono = document.getElementById('preview-telefono');
-
-// Función para actualizar la previsualización
-function actualizarPrevisualizacion() {
-  previewNombre.textContent = nombreInput.value || 'Nombre de la empresa';
-  previewCorreo.textContent = correoInput.value || 'Correo electrónico';
-  previewTelefono.textContent = telefonoInput.value || 'Teléfono de la empresa';
-}
-
-// Asigna el evento input a cada campo del formulario
-nombreInput.addEventListener('input', actualizarPrevisualizacion);
-correoInput.addEventListener('input', actualizarPrevisualizacion);
-telefonoInput.addEventListener('input', actualizarPrevisualizacion);
-
-// Llama a la función al inicio para mostrar los valores por defecto
-actualizarPrevisualizacion();
 
 //Obtiene el boton de agregar Producto
 const btnAgregarProducto = document.getElementById('btnAgregarProducto');
@@ -114,15 +96,15 @@ btnAgregarProducto.addEventListener('click', () => {
   }
 });
 
-// Seccion 3 y 4
+// Seccion 4
 const resumenEmpresa = document.getElementById('resumen-empresa');
 const resumenProductos = document.getElementById('resumen-productos');
 
 function actualizarResumen() {
   const empresa = `
-        Nombre: ${previewNombre.textContent}
-        Correo: ${previewCorreo.textContent}
-        Teléfono: ${previewTelefono.textContent}
+        Nombre: ${nombreInput.value}
+        Correo: ${correoInput.value}
+        Teléfono: ${telefonoInput.value}
     `;
   resumenEmpresa.textContent = empresa;
 
@@ -181,7 +163,7 @@ function guardarCotizacion() {
   // Aquí puedes implementar el código para guardar los datos en la base de datos
 
 
-  
+
   // Puedes utilizar una API o una biblioteca como Firebase o MongoDB para interactuar con la base de datos
 
   console.log('Datos de la cotización:', {
