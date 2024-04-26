@@ -178,3 +178,57 @@ function guardarCotizacion() {
 // Evento para generar la cotización
 const btnGenerarCotizacion = document.getElementById('generarCotizacion');
 btnGenerarCotizacion.addEventListener('click', guardarCotizacion);
+
+
+// Section 4
+
+// Obtiene el cuerpo de la tabla de productos
+const tablaProductos = document.getElementById('tabla-productos');
+
+// Función para renderizar la tabla de productos
+function renderizarTablaProductos() {
+  tablaProductos.innerHTML = '';
+
+  ProductList.forEach(producto => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${producto.nombre}</td>
+      <td>${producto.marca}</td>
+      <td>${producto.cantidad}</td>
+      <td>${producto.descripcion}</td>
+      <td><button class="btn btn-primary" data-toggle="modal" data-target="#modalDetalles">Agregar detalles</button></td>
+    `;
+    tablaProductos.appendChild(row);
+  });
+}
+
+// Llama a la función renderizarTablaProductos cuando se actualice la lista de productos
+btnAgregarProducto.addEventListener('click', renderizarTablaProductos);
+
+// Obtiene los elementos del modal de detalles
+const modalDetalles = document.getElementById('modalDetalles');
+const colorProductoInput = document.getElementById('colorProducto');
+const dimensionesProductoInput = document.getElementById('dimensionesProducto');
+const materialProductoInput = document.getElementById('materialProducto');
+const btnGuardarDetalles = document.getElementById('guardarDetalles');
+
+// Función para guardar los detalles del producto
+function guardarDetallesProducto() {
+  const color = colorProductoInput.value;
+  const dimensiones = dimensionesProductoInput.value;
+  const material = materialProductoInput.value;
+
+  // Aquí puedes guardar los detalles del producto en alguna estructura de datos
+  // o enviarlos al servidor, según tus necesidades.
+
+  // Limpia los campos del modal
+  colorProductoInput.value = '';
+  dimensionesProductoInput.value = '';
+  materialProductoInput.value = '';
+
+  // Cierra el modal
+  $('#modalDetalles').modal('hide');
+}
+
+// Evento para guardar los detalles del producto
+btnGuardarDetalles.addEventListener('click', guardarDetallesProducto);

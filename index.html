@@ -119,39 +119,21 @@
         </section>
         <!-- Section 3-->
         <section class="section3">
-            <h2>Detalles</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h3>Información de Envío</h3>
-                        <div class="form-group">
-                            <label for="direccion">Dirección</label>
-                            <input type="text" class="form-control" id="direccion" placeholder="Ingrese la dirección">
-                        </div>
-                        <div class="form-group">
-                            <label for="ciudad">Ciudad</label>
-                            <input type="text" class="form-control" id="ciudad" placeholder="Ingrese la ciudad">
-                        </div>
-                        <div class="form-group">
-                            <label for="pais">País</label>
-                            <input type="text" class="form-control" id="pais" placeholder="Ingrese el país">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h3>Método de Pago</h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="pago" id="tarjeta" value="tarjeta">
-                            <label class="form-check-label" for="tarjeta">Tarjeta de Crédito</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="pago" id="paypal" value="paypal">
-                            <label class="form-check-label" for="paypal">PayPal</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="pago" id="efectivo" value="efectivo">
-                            <label class="form-check-label" for="efectivo">Efectivo</label>
-                        </div>
-                    </div>
+            <h2>Detalles de los Productos</h2>
+            <div class="section3-container">
+                <div class="container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Marca</th>
+                                <th>Cantidad</th>
+                                <th>Descripción</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-productos"></tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -207,6 +189,43 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <a href="seguimiento.html" class="btn btn-primary">Siguiente</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalles del Producto -->
+    <div class="modal fade" id="modalDetalles" tabindex="-1" role="dialog" aria-labelledby="modalDetallesLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDetallesLabel">Detalles del Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="colorProducto">Color:</label>
+                            <input type="text" class="form-control" id="colorProducto" placeholder="Ingrese el color">
+                        </div>
+                        <div class="form-group">
+                            <label for="dimensionesProducto">Dimensiones:</label>
+                            <input type="text" class="form-control" id="dimensionesProducto"
+                                placeholder="Ingrese las dimensiones">
+                        </div>
+                        <div class="form-group">
+                            <label for="materialProducto">Material:</label>
+                            <input type="text" class="form-control" id="materialProducto"
+                                placeholder="Ingrese el material">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="guardarDetalles">Guardar</button>
                 </div>
             </div>
         </div>
